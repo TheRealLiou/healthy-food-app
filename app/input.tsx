@@ -1,6 +1,19 @@
-"use client";
-import { InputHTMLAttributes } from "react";
+import { ChangeEvent } from "react";
 
-export function Input(props: InputHTMLAttributes<HTMLInputElement>) {
-  return <input {...props} className="p-2 border rounded-lg w-full" />;
+interface InputProps {
+  placeholder?: string;
+  value: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export function Input({ placeholder, value, onChange }: InputProps) {
+  return (
+    <input
+      type="text"
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      className="p-2 border rounded"
+    />
+  );
 }

@@ -1,8 +1,13 @@
-"use client";
-export function Card({ children }: { children: React.ReactNode }) {
-  return <div className="p-4 border rounded-lg shadow-sm">{children}</div>;
+import { ReactNode } from "react";
+
+interface CardProps {
+  children: ReactNode;
 }
 
-export function CardContent({ children }: { children: React.ReactNode }) {
-  return <div className="mt-2">{children}</div>;
+export function Card({ children }: CardProps) {
+  return <div className="p-4 border rounded-lg shadow">{children}</div>;
+}
+
+export function CardContent({ children }: CardProps) {
+  return <div className="p-2">{children}</div>;
 }
