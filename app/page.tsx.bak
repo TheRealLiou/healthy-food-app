@@ -1,4 +1,3 @@
-page.tsx
 "use client";
 
 import { useState } from "react";
@@ -11,12 +10,12 @@ import { LucideSearch } from "lucide-react";
 const restaurants = [
   {
     id: 1,
-    name: "Green Bites",
+    name: "Υγιεινές Μπουκιές",
     type: "Vegan",
     image: "https://via.placeholder.com/150",
     menu: [
-      { name: "Vegan Salad", price: 8.99, description: "Fresh greens with organic toppings" },
-      { name: "Tofu Wrap", price: 7.99, description: "Whole wheat wrap with marinated tofu" }
+      { name: "Βίγκαν Σαλάτα", price: 8.99, description: "Φρέσκα λαχανικά με βιολογικά υλικά" },
+      { name: "Τόφου Wrap", price: 7.99, description: "Τορτίγια ολικής με μαριναρισμένο τόφου" }
     ]
   },
   {
@@ -25,18 +24,18 @@ const restaurants = [
     type: "Keto",
     image: "https://via.placeholder.com/150",
     menu: [
-      { name: "Keto Chicken Bowl", price: 10.99, description: "Grilled chicken with avocado and greens" },
-      { name: "Egg Muffins", price: 6.99, description: "Baked eggs with cheese and bacon" }
+      { name: "Κετο Μπολ Κοτόπουλου", price: 10.99, description: "Ψητό κοτόπουλο με αβοκάντο & λαχανικά" },
+      { name: "Αυγά Muffins", price: 6.99, description: "Ψητά αυγά με τυρί και μπέικον" }
     ]
   },
   {
     id: 3,
     name: "Healthy Haven",
-    type: "Gluten-Free",
+    type: "Χωρίς Γλουτένη",
     image: "https://via.placeholder.com/150",
     menu: [
-      { name: "Quinoa Bowl", price: 9.99, description: "Quinoa, chickpeas, and veggies" },
-      { name: "Gluten-Free Pancakes", price: 8.49, description: "Made with almond flour and honey" }
+      { name: "Μπολ Κινόα", price: 9.99, description: "Κινόα, ρεβίθια και λαχανικά" },
+      { name: "Πανκέικ Χωρίς Γλουτένη", price: 8.49, description: "Με αλεύρι αμυγδάλου & μέλι" }
     ]
   }
 ];
@@ -75,7 +74,7 @@ export default function HealthyFoodApp() {
           <>
             <div className="flex items-center gap-2 mb-4">
               <Input
-                placeholder="Search restaurants..."
+                placeholder="Αναζήτηση εστιατορίων..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full"
@@ -84,7 +83,7 @@ export default function HealthyFoodApp() {
             </div>
 
             <div className="flex gap-2 mb-4">
-              {["Vegan", "Keto", "Gluten-Free", "Protein Snacks"].map((filter) => (
+              {["Vegan", "Keto", "Χωρίς Γλουτένη", "Πρωτεϊνικά Σνακ"].map((filter) => (
                 <Button
                   key={filter}
                   variant={selectedFilter === filter ? "default" : "outline"}
@@ -97,16 +96,16 @@ export default function HealthyFoodApp() {
           </>
         ) : (
           <div>
-            <Button onClick={() => setSelectedRestaurant(null)} className="mb-4">Back</Button>
-            <h2 className="text-xl font-bold mb-4">{selectedRestaurant.name} - Menu</h2>
+            <Button onClick={() => setSelectedRestaurant(null)} className="mb-4">Πίσω</Button>
+            <h2 className="text-xl font-bold mb-4">{selectedRestaurant.name} - Μενού</h2>
             <motion.div className="grid grid-cols-1 gap-4">
               {selectedRestaurant.menu.map((item: MenuItem, index: number) => (
                 <Card key={index} className="p-2">
                   <CardContent>
                     <h3 className="text-lg font-semibold">{item.name}</h3>
                     <p className="text-sm text-gray-500">{item.description}</p>
-                    <p className="text-sm font-bold">${item.price.toFixed(2)}</p>
-                    <Button onClick={() => addToCart(item)} className="mt-2">Add to Cart</Button>
+                    <p className="text-sm font-bold">€{item.price.toFixed(2)}</p>
+                    <Button onClick={() => addToCart(item)} className="mt-2">Προσθήκη στο Καλάθι</Button>
                   </CardContent>
                 </Card>
               ))}
@@ -115,10 +114,10 @@ export default function HealthyFoodApp() {
         )
       ) : (
         <div className="text-center p-4">
-          <h2 className="text-2xl font-bold">Order Confirmed! 🎉</h2>
-          <p className="text-lg mt-2">Estimated delivery time: {estimatedTime} minutes</p>
+          <h2 className="text-2xl font-bold">Η παραγγελία επιβεβαιώθηκε! 🎉</h2>
+          <p className="text-lg mt-2">Εκτιμώμενος χρόνος παράδοσης: {estimatedTime} λεπτά</p>
         </div>
       )}
     </div>
   );
-}
+}p
