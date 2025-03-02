@@ -94,20 +94,6 @@ const addToCart = (item: MenuItem) => {
                 </Button>
               ))}
             </div>
-
-            <motion.div className="grid grid-cols-1 gap-4">
-              {filteredRestaurants.map((restaurant) => (
-                <Card key={restaurant.id} className="p-2 cursor-pointer" onClick={() => setSelectedRestaurant(restaurant)}>
-                  <CardContent className="flex items-center gap-4">
-                    <img src={restaurant.image} alt={restaurant.name} className="w-16 h-16 rounded-xl" />
-                    <div>
-                      <h2 className="text-lg font-semibold">{restaurant.name}</h2>
-                      <p className="text-sm text-gray-500">{restaurant.type} Options</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </motion.div>
           </>
         ) : (
           <div>
@@ -136,3 +122,4 @@ const addToCart = (item: MenuItem) => {
     </div>
   );
 }
+export default HealthyFoodApp;
