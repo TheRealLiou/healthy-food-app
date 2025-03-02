@@ -41,26 +41,24 @@ const restaurants = [
 ];
 
 export default function HealthyFoodApp() {
-  const [selectedFilter, setSelectedFilter] = useState(null);
-  const [search, setSearch] = useState("");
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  const [cart, setCart] = useState([]);
-  const [orderConfirmed, setOrderConfirmed] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+  const [search, setSearch] = useState<string>("");
+  const [selectedRestaurant, setSelectedRestaurant] = useState<any>(null);
+  const [cart, setCart] = useState<any[]>([]);
+  const [orderConfirmed, setOrderConfirmed] = useState<boolean>(false);
   const estimatedTime = Math.floor(Math.random() * (45 - 20 + 1)) + 20;
 
-  const filteredRestaurants = restaurants.filter(
-    (r) => (!selectedFilter || r.type === selectedFilter) && r.name.toLowerCase().includes(search.toLowerCase())
-  );
+  type MenuItem = {
+    name: string;
+    price: number;
+    description: string;
+  };
 
- type MenuItem = {
-  name: string;
-  price: number;
-  description: string;
-};
+  const addToCart = (item: MenuItem) => {
+    setCart([...cart, item]);
+  };
 
-const addToCart = (item: MenuItem) => {
-
-  const removeFromCart = (index) => {
+  const removeFromCart = (index: number) => {
     setCart(cart.filter((_, i) => i !== index));
   };
 
@@ -101,7 +99,7 @@ const addToCart = (item: MenuItem) => {
             <Button onClick={() => setSelectedRestaurant(null)} className="mb-4">Back</Button>
             <h2 className="text-xl font-bold mb-4">{selectedRestaurant.name} - Menu</h2>
             <motion.div className="grid grid-cols-1 gap-4">
-              {selectedRestaurant.menu.map((item, index) => (
+              {selectedRestaurant.menu.map((item: MenuItem, index: number) => (
                 <Card key={index} className="p-2">
                   <CardContent>
                     <h3 className="text-lg font-semibold">{item.name}</h3>
@@ -123,5 +121,3 @@ const addToCart = (item: MenuItem) => {
     </div>
   );
 }
-
-export default HealthyFoodApp;
