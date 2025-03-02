@@ -123,4 +123,5 @@ const addToCart = (item: MenuItem) => {
     </div>
   );
 }
+
 export default HealthyFoodApp;
