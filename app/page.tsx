@@ -51,9 +51,13 @@ export default function HealthyFoodApp() {
     (r) => (!selectedFilter || r.type === selectedFilter) && r.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const addToCart = (item: { name: string; price: number; description: string }) => {
-    setCart([...cart, item]);
-  };
+ type MenuItem = {
+  name: string;
+  price: number;
+  description: string;
+};
+
+const addToCart = (item: MenuItem) => {
 
   const removeFromCart = (index) => {
     setCart(cart.filter((_, i) => i !== index));
